@@ -5,10 +5,26 @@
 
 ## A Saturday in a London park
 
-*On 2 October 2004, thirteen people ran a timed 5K around Bushy Park in Teddington. Twenty years later the same free, volunteer-run ritual happens every Saturday at ~2,900 events in 21 countries. The data reveals something more interesting than a running boom: a global human habit governed by psychology, survivorship, climate and culture far more than by fitness.*
+On a damp Saturday morning, the 2nd of October 2004, thirteen people gathered in a corner of Bushy Park, a stretch of royal parkland on the western edge of London. There was no entry fee, no medal, no starting gun worth the name. Someone wrote down the finishing times by hand. It was called, simply, a time trial — a free, timed run of five kilometres around the park.
+
+Twenty-two years later, that same modest ritual happens every Saturday morning at roughly 2,900 events across 21 countries. Nearly a million people a week walk, jog and run their 5K, scan a barcode at the finish, and have a number recorded. It is one of the largest repeated measurements of ordinary human behaviour ever made — and almost all of it is free to read.
+
+This book mines that record. And the surprise, again and again, is that parkrun is not really a story about fitness. It is a story about people. The patterns in the data — where the events spread, who comes back, who quietly drops out, how a crowd behaves at a round number on a clock — are governed far more by psychology, survivorship (who sticks around long enough to be counted), climate and culture than by how fast anybody can run.
+
+So this is a journey from one London park to the whole planet, and back down to a single finish funnel. We will watch a free 5K conquer the English-speaking world but stall almost everywhere else. We will catch runners sprinting to beat a round number on a clock they insist they are not racing. We will find the cliff where most first-timers never return, the t-shirt milestones that hook some and dismiss others, the mirror-image seasons of the two hemispheres, and the single week in March 2020 when every clock on Earth stopped at once. Throughout, the maths is in the service of a human question: what does it take to get people to keep showing up?
 
 
 ## Chapter 1 — How a park run conquered the world
+
+On a damp Saturday morning in October 2004, thirteen runners gathered in a corner of Bushy Park, a stretch of royal parkland on the western edge of London. There was no entry fee, no medal, no starting gun worth the name. Someone wrote down the finish times by hand. It was called, simply, a time trial.
+
+Twenty-two years later, that modest experiment has a name the whole world recognises — parkrun — and it happens every single week in more than 2,300 places, from Cape Town to Tokyo to a windswept beach in Ontario. Hundreds of thousands of people lace up on a Saturday for a free, timed, five-kilometre run that nobody is allowed to call a race.
+
+How did one park run in one London suburb turn into a planet-spanning weekly ritual? This chapter follows that spread — where it went, how fast each event grew, and the strange, lawful shapes the whole thing settles into. The story turns out to be less about running and more about language, migration, and the quiet mathematics of how crowds gather.
+
+Start with the simplest possible question: where is parkrun, and when did it arrive? If you plot every one of the events as a single dot on a world map and tint each one by the year it launched, a pattern of conquest emerges — not a smooth tide washing outward, but a series of sudden jumps.
+
+One honest caveat to carry with you. We only have firm launch dates for about 14% of events — the early, well-archived ones — so the colours and the timing lines are a *sample*, a representative slice rather than the full census. They tell you the order and the rhythm reliably (which country went first, and that the rest came in clusters), even if they undercount the totals. Britain ran essentially alone for years before the rest of the map lit up.
 
 ![hero_launch_map](figures/hero_launch_map.png)
 
@@ -26,6 +42,10 @@
 
 </details>
 
+Look harder at *where* the dots cluster and the map stops looking like a map of the world at all. parkrun did not spread to the biggest countries, or the richest, or the nearest. It spread along a very particular set of railway lines: the English language and the old web of British migration.
+
+The full census — all 2,922 events, no sampling needed — makes the point bluntly. Nine English-speaking and Commonwealth-diaspora nations hold the overwhelming majority of events. The single most telling number: South Africa, with 229 events, has more than twice as many as the entire United States, which has 99. A country's population barely predicts its parkrun count; whether people there grew up speaking English predicts it almost perfectly.
+
 ![global_spread](figures/global_spread.png)
 
 > 88% of all events sit in just nine English-speaking or Commonwealth-diaspora countries, and South Africa has more events than the USA — the map tracks language and migration, not geography or population.
@@ -41,6 +61,10 @@
 <p><strong>Robustness.</strong> Launch dates exist for only 1.9% of events; the "punctuated spread" inset is labelled as a 55-event sample showing entry order, not global totals. The robust census claim — 88% in nine English-speaking nations — is independent of dates and holds across the full 2,922-event population.</p>
 
 </details>
+
+So much for where events are. Now zoom right in to a single one and ask: once a parkrun starts, what happens? Does it grow forever, or find a natural size and stop?
+
+To answer this we line up well-established events not by calendar date but by *weeks since their own launch*, so a 2009 start and a 2015 start can be compared on the same clock. The median path traces an unmistakable shape: a slow ramp, a steep middle, then a flattening plateau. Statisticians call this an S-curve, or logistic growth — the same curve that describes a rumour saturating a school, or a pond filling with lily pads until there's no open water left. Each event grows fast, then runs into a *carrying capacity*: the most runners that local town will reliably send on a Saturday. The fit is remarkably tight, and an event reaches about 90% of its eventual size within roughly three and a half years. Almost nothing breaks that plateau — except, once, a global pandemic.
 
 ![growth_curves](figures/growth_curves.png)
 
@@ -58,6 +82,10 @@
 
 </details>
 
+Here's a puzzle that should have an obvious answer. If you open a second parkrun a few kilometres from an existing one, surely it steals runners from the first — the two split a fixed local crowd. More events, smaller events. Right?
+
+Exactly wrong. We counted, for every event, how many other parkruns sit within 25 kilometres, and then looked at average turnout. Isolated events — no neighbour for 25 km — draw just 53 runners on average. Events surrounded by 25 or more neighbours draw 218. That is a fourfold *agglomeration effect*: crowding makes parkruns bigger, not smaller. And it holds *inside* every country, so it isn't just Britain's dense, busy network flattering the numbers. parkrun behaves like cafés or markets — it clusters and feeds on itself rather than cannibalising. (A caution worth stating: this is a correlation between local running culture and density, not proof that proximity itself causes the growth.)
+
 ![geography_shape](figures/geography_shape.png)
 
 > Crowding makes parkruns bigger, not smaller: events with no neighbour within 25 km average 53 finishers, those with 25+ neighbours average 218 — a 4× agglomeration effect that holds inside every country. parkrun clusters; it doesn’t cannibalise.
@@ -73,6 +101,12 @@
 <p><strong>Robustness.</strong> Event maturity controlled: restricting to ≥52 weeks leaves correlation unchanged. Medians track means (40→189), ruling out heavy-tail skew. Within-country demeaning removes country composition as confound. Not causal—this is culture and population density correlation, not proof that proximity growth drives attendance.</p>
 
 </details>
+
+One last shape, and it's the one that quietly explains everything before it. We tend to imagine a thing like parkrun as a few enormous flagship events towering over a long tail of tiny ones — a handful of giants, everyone else an afterthought. It is worth checking whether that's actually true.
+
+It isn't. When you take the logarithm of each event's size — a standard trick that stretches out the small values and compresses the huge ones, so you can see the whole range at once — the sizes fall into a single clean bell curve. That signature is called a *lognormal* distribution: lots of medium events, symmetrically fewer small and fewer large, and crucially no runaway heavy tail of mega-events dominating the rest. We tested the power-law alternative directly; it failed.
+
+But the bell sits in a different place for each country. And about 38% of all the variation in event size comes down to one fact alone — which nation you're standing in. The median British event is 5.3 times the size of the median American one. It's not a world of giants and minnows; it's the same bell curve, slid sideways by passport.
 
 ![event_size_inequality](figures/event_size_inequality.png)
 
@@ -90,8 +124,20 @@
 
 </details>
 
+So parkrun conquered the world by following language rather than geography, and inside each country it grows the same way — fast, then flat, into one orderly lognormal spread of sizes. But a map and a growth curve only tell you how many people showed up. They say nothing about what those people *did* once the clock started — and it turns out that a free run nobody is allowed to call a race is, underneath, governed by some surprisingly sharp arithmetic. That's where we go next.
+
 
 ## Chapter 2 — The fun run is secretly arithmetic
+
+parkrun has a slogan it likes to repeat: *it's not a race, it's a run*. No prize money, no podium, no entry fee. Just a free, timed 5 kilometres around a park on a Saturday morning, open to anyone who turns up.
+
+And yet. Every finisher crosses a line, a barcode is scanned, and a number is recorded to the second. Where there are numbers, there are patterns — and where there are patterns, there is human nature, quietly doing arithmetic when nobody admits to caring.
+
+This chapter pulls apart nearly a million finishes from a single famous course — Bushy Park, the original parkrun — to ask a simple question: if it isn't a race, why does the data behave exactly like one? The answer is a tour through the hidden machinery of the running clock: goal-chasing psychology, the long arc of a body's fitness across a lifetime, and the strange statistics of records that almost never break.
+
+Start with the clock itself. Round numbers have a gravitational pull on the human mind — break 20 minutes, break 25, finish under half an hour. These thresholds mean nothing physically; your body doesn't know the difference between 19:59 and 20:01. But your sense of achievement does.
+
+If runners were truly just out for a jog, finish times would spread smoothly across the clock. Instead they pile up in the seconds *just before* each round minute, then thin out just after — proof that people are quietly racing the clock. The clever part is what the size of that pile-up reveals: the faster you are, the bigger the prize of a round number, and the harder you sprint for it.
 
 ![subx_stampede](figures/subx_stampede_v2.png)
 
@@ -109,6 +155,10 @@
 
 </details>
 
+If the clock exposes goal-chasing, the next question is bigger: how does a human body perform across an entire lifetime? To compare a 30-year-old with a 70-year-old fairly, parkrun uses **age grade** — a handicap that scores your time against the world-best for your exact age and sex, on a single 0–100% scale. A 50% finish is solidly average for your age; the elite tail sits above 70%.
+
+Plot age grade against age and you get a curve that should fall steadily as people get older. It mostly doesn't — and one part of it looked genuinely astonishing: women appearing to *peak* in their eighties. That result was too good to take at face value. It turned out to be a trap called repeat-attendance weighting: a handful of devoted octogenarians who run almost every week, each counted dozens of times, dragging the average up. Strip that out by counting each person once, and the story gets quieter but truer.
+
 ![age_curve](figures/age_curve_v2.png)
 
 > Rebuilt from 910,000 finishes: women genuinely rebound to a performance peak at age 67 and men hold a flat veterans plateau to ~67 — but the eye-catching ‘women peak in their 80s’ turns out to be a counting artifact (a few devoted octogenarians), which vanishes under per-runner dedup.
@@ -124,6 +174,10 @@
 <p><strong>Robustness.</strong> Key confound ruled out by red-team: the dramatic "women peak in 80s" (62–63%) survives only in population view, driven by repeat-attendance weighting (devoted octogenarians running 11–16 races each vs. younger runners ~3–4 races). Per-runner dedup removes this weighting; the surviving female rebound (trough ~37 → peak ~67) is robust (Nuniq 1,320–3,015). Male veterans plateau holds in both views. Thin-data threshold: ages with N < 150 (population) or Nuniq < 50 (per-runner) marked hollow to flag low credibility.</p>
 
 </details>
+
+The age curve hides a second surprise when you split it by sex. There is no single 'gender gap' in parkrun — there are two, pulling in opposite directions, and they cross.
+
+At the sharp end, men dominate: they are far more likely to reach the elite tier above 70% age grade. But age grade already corrects for sex, so this isn't simply men being faster — it's men clustering more densely at the top of their own scale. Then, somewhere around the early sixties, the curves swap. Older women out-age-grade older men. Speed favours one sex; athletic longevity favours the other.
 
 ![sex_age_curve_crossover](figures/sex_age_curve_crossover.png)
 
@@ -141,6 +195,10 @@
 
 </details>
 
+You have probably heard that parkrun has 'got slower' over the years. It's true — the typical finisher today is minutes slower than the typical finisher in 2005. The obvious explanation is crowding, or a nation getting unfit. Both are wrong.
+
+The trick is to watch three numbers at once over 22 years: the field size (how many people show up), the **median** time (the middle finisher, with half faster and half slower — a fairer 'typical' than the average, which a few very slow walkers can distort), and the fastest time each week. The field exploded a hundredfold. The median crept slower. But the front of the race never moved.
+
 ![elite_stagnation_floor](figures/elite_stagnation_floor.png)
 
 > The field grew 100× and the median runner slowed 6 minutes — but the fastest finisher has held a flat ~16:00 floor for 22 years. The ‘slowing parkrun’ is composition, not congestion, and not the front of the race.
@@ -156,6 +214,10 @@
 <p><strong>Robustness.</strong> The naive headline "more finishers → slower times" (Pearson r = 0.88) is driven by shared time trend; within-year (detrended) r = 0.21, partial r = 0.41. The apparent negative correlation between field size and elite speed (r = −0.28) is an artifact of small early fields with no elite runners present (r = −0.55 for <100 finishers) but vanishes in mature large fields (r = −0.18 for >500 finishers).</p>
 
 </details>
+
+If the fastest *weekly* finisher has held a flat floor, what about the all-time record — the single fastest run ever recorded on the course? In a normal sport, records fall as the talent pool grows. parkrun did the opposite.
+
+The course records here are extreme outliers: the kind of time you only get when a genuine Olympian happens to wander down to a local park on a Saturday. Massification — letting in a hundred times more people — didn't push those records faster. It diluted the elite tail with ordinary runners. The result is a record staircase that climbed in parkrun's small early years and then simply froze.
 
 ![records_armsrace](figures/records_armsrace.png)
 
@@ -173,6 +235,10 @@
 
 </details>
 
+So the front and the records sit frozen. But what happens inside one ordinary runner over their own parkrun career? Here we have to be careful about a trap called **survivorship bias** — the illusion you get when slow newcomers quietly quit, leaving only the fast and committed behind, which can fake an 'everyone improves' story that's really just the slow people disappearing.
+
+The fix is to follow the *same* people across every run, measuring each appearance against that person's own average. Do that, and a genuine human arc emerges: a clumsy debut, a long climb to peak form a couple of years in, and a personal best that, satisfyingly, tends to arrive well into a career rather than at the start.
+
 ![improvement_arc](figures/improvement_arc.png)
 
 > Your fastest parkrun usually arrives years after your first: within each runner the debut is ~79s slower than their own average, peak form lands near run 28 (~2 years in), and the personal best typically falls about 57% of the way through a parkrun career — then age gently bites.
@@ -188,6 +254,10 @@
 <p><strong>Robustness.</strong> Survivorship of curve shape ruled out by fixing the same 3,505 people across all appearance numbers—same people, so the rise then re-decline arc is genuine, not composition. Late-PB signal is real by permutation test, not a mechanical artifact of more chances. Aging effect (upturn from run 28 to 50) disclosed and validated by dose response: juniors PB at 80% of career, seniors 60%, veterans 47%.</p>
 
 </details>
+
+That arc raises a puzzle about personal bests. New runners shatter their PB constantly at first, then almost stop. Is that a fitness plateau — or just mathematics?
+
+There's a baseline effect called **record statistics**: even with zero improvement, a record gets harder to beat simply because you already hold it. On your second-ever run you have only one time to beat, so a coin-flip 50% chance; by your twelfth, you must beat eleven, so roughly a 1-in-12 chance. Subtract that pure-chance baseline from what runners actually achieve, and you can split the PB cascade into two halves: the part that's inevitable arithmetic, and the part that's real fitness.
 
 ![pb_cascade](figures/pb_cascade.png)
 
@@ -205,6 +275,10 @@
 
 </details>
 
+Return to the 'parkrun is slowing' story, but this time look not at the middle but at the very back. If the median barely moved and the front froze, then all the change must be hiding in the tail — and it is.
+
+The **99th percentile** — the time only the slowest 1% take longer than — tells the real story. The back of the pack didn't just slow; it transformed. To rule out simple crowding, you can hold the field size constant and check whether the spread still grows. It does, which means this is a cultural shift: parkrun quietly becoming a place to walk, not just to run.
+
 ![back_of_pack](figures/back_of_pack.png)
 
 > The median finish slowed 27% in 22 years, but the back of the pack slowed 80% (p99: 32→59 min) and the field’s spread more than doubled — and it holds at constant field size, so it’s a cultural shift to walking, not crowding. The action is all in the tail.
@@ -220,6 +294,10 @@
 <p><strong>Robustness.</strong> Main confound tested and ruled out: crowding. Though field size correlates with spread, partial correlations show year dominates (field size adds nothing to a year-only model). Repeat-walker artifact: broad population (2,949 distinct slow finishers, 2.5 visits each, not a handful). Used p95/p99 (robust percentiles), not raw max, so a single 89-min outlier cannot drive the trend.</p>
 
 </details>
+
+One last pattern threads through everything above: where in the field do women finish? We already saw men dominate the elite tail and women excel at age-graded longevity. Lay finishing position end to end and the picture becomes stark and structural.
+
+At the very sharp front the field is almost entirely male; walk toward the back and women become the clear majority. The median woman has finished in the back third of the field for seventeen straight years. As parkrun feminised — women rising from 30% of finishers to 42% — the curve lifted and flattened, but the fastest tenth stayed stubbornly male.
 
 ![gender_by_position](figures/gender_by_position.png)
 
@@ -237,8 +315,24 @@
 
 </details>
 
+Pull it all together and the slogan turns out to be half-true. parkrun isn't a race in the way it pays out — there's no prize, no podium — but it is quietly governed by the arithmetic of one: the pull of a round number, the lifelong arc of a body, the cold statistics of records, and a field steadily reshaping itself around who chooses to walk and who chooses to sprint. None of it is really about fitness. It's about who keeps showing up — which is exactly the question the next chapter sets out to answer.
+
 
 ## Chapter 3 — Who keeps showing up
+
+The first two chapters were about the race: how parkrun spread across the planet, and how its times quietly bend to psychology and arithmetic. But a Saturday 5K is not really a race. It is a habit. And habits live or die on one question: who comes back?
+
+Every week, hundreds of thousands of people finish a parkrun. Some are there for the first time, nervous at the back. Some are on their 250th, wearing the t-shirt that proves it. Most, it turns out, we will never see again. Beneath the cheerful turnout figures lies a quieter, more human story about loyalty, belonging, and quitting.
+
+To tell it, this chapter zooms in on a single venue — Bushy Park in Teddington, where it all began in 2004. Bushy has more than a thousand events on record, nearly a million finish lines crossed, and over 120,000 distinct people who have run there at least once. That depth lets us follow individuals across years: when they debuted, how often they returned, when they finally stopped for good.
+
+What we find is that showing up once is easy. Keeping showing up is rare, getting rarer, and unevenly shared. The people who form parkrun's backbone are not who you might guess — and the things that keep them coming back are not the things parkrun talks about most.
+
+Start with the most basic loyalty test of all: of everyone who runs their first-ever parkrun, how many ever come back for a second? In the early years the answer was reassuring. Most newcomers returned.
+
+To measure this honestly you have to be careful about a trap statisticians call *censoring* — someone who debuted last month and hasn't returned yet isn't a quitter, they simply haven't had the chance. The technique used here, *Kaplan-Meier survival analysis* (the same maths doctors use to track how long patients live after a treatment), only counts a 'quit' when a runner genuinely had a fair window to return and didn't. With 22 years of data, that correction barely moves the numbers — which means the trend below is real, not an artefact of recent newcomers.
+
+And the trend is stark. The share of first-timers who never return has tripled across two decades.
 
 ![survival_loyalty](figures/survival_loyalty_v2.png)
 
@@ -256,6 +350,12 @@
 
 </details>
 
+If loyalty is fading, what holds people in? parkrun's most famous answer is the milestone t-shirt: free running shirts awarded at 25, 50, 100, 250 and 500 lifetime runs. The theory is that a goal keeps you coming back.
+
+The data lets us test that theory in a sly way. For each runner we record the exact lifetime total at which they ran their very last parkrun ever — the number they 'quit on'. Then we look for *heaping*: a pile-up of last-ever runs at round, shirt-worthy numbers, compared to the boring numbers either side. If milestones simply motivated people, we'd expect them to keep going past those numbers, not stop on them.
+
+The picture is more interesting than the slogan. The milestone is both a hook and a trapdoor — and which one depends on the number.
+
 ![milestone_magnetism](figures/milestone_magnetism.png)
 
 > The milestone t-shirt bends the quit curve: runners are 18–27% more likely to make their last-ever parkrun at exactly 50 or 100 lifetime runs, but 16% less likely to stop at 25. The first shirt is a hook; the next ones are an exit — and placebo round numbers show no effect.
@@ -271,6 +371,12 @@
 <p><strong>Robustness.</strong> Tested across censoring windows (52/104/156 weeks). Bushy-dominant athletes (≥70% of runs at Bushy): effect stronger (50→1.43, 100→1.54), ruling out confound that athletes quit Bushy but ran elsewhere. The 25 anti-magnet result (opposite direction from 50/100) is genuine: the first shirt is a retention hook, but reaching 50 or 100 predicts exit.</p>
 
 </details>
+
+So who is actually in the field, and how is that changing? Stand at the Bushy finish line in 2007 and again in 2025 and you would notice something: the crowd has aged. That alone wouldn't be surprising — the founders simply got older alongside the event.
+
+But that explanation has a name and a flaw. It's a form of *survivorship bias*: if you only watch the loyal core, of course the average age drifts up, because the same people are ageing in place. The real question is whether *new* runners — the brand-new debutants each year — are also arriving older.
+
+By tracking each person's first-ever appearance separately, we can split the two. The answer rules out 'just ageing founders': the newcomers themselves are arriving greyer every year.
 
 ![age_pyramid](figures/age_pyramid.png)
 
@@ -288,6 +394,12 @@
 
 </details>
 
+Here is a stranger way to take the crowd's pulse — through its first names. Every name carries a hidden birth-cohort. A room full of Dorothys and Geoffreys skews old; a room full of Olivias and Noahs skews young. Across hundreds of thousands of runners, you can build a 'name-age signature' for each common name: the typical age of everyone who bears it.
+
+Then you can ask a mischievous question. The actual crowd at Bushy is ageing in the flesh. But are the *names* in the crowd ageing too — or being quietly refreshed by a younger generation slipping in under the radar?
+
+The two trends pull in opposite directions, and the gap tells us something the raw age numbers hide.
+
 ![names_generations](figures/names_generations.png)
 
 > parkrun is ageing in body but rejuvenating in name: the average Bushy runner aged 6.5 years since 2005, yet the birth-cohort their first names belong to grew 4.2 years younger (correlation −0.83) — a John/Steve/Dave crowd refreshed by Toms, Alexes and Emmas.
@@ -303,6 +415,12 @@
 <p><strong>Robustness.</strong> Red-teamed four confounds: (1) Junior invasion — restricting to adult-coded names (mean bearer age ≥25), implied age still fell 48.1→43.8. (2) Female influx — effect holds within each sex (male 47.7→44.3, female 48.9→42.9). (3) Coverage drift — ≥200-bearer map stable at 82–90%. (4) Run-weighted (regulars counted per visit), not unique people, but both views show the same churn in top-name ranks.</p>
 
 </details>
+
+Now to the runners who stick around the most — and a comforting story that turns out to be wrong. Some parkrunners belong to a formal running club, marked by a club name beside their result. Club members are, on average, noticeably faster than unaffiliated runners.
+
+The tempting conclusion is that clubs *make* you faster: training nights, coaching, the discipline of a group. To test it we use *age grade* — a handicap that scores your time against the world-best for your exact age and sex, putting a 25-year-old man and a 70-year-old woman on one fair 0-to-100% scale.
+
+The clean test is the very first parkrun. If clubs trained people up, the gap should grow over a running career. If clubs simply recruit people who are already quick, the gap should be there from day one. It is there from day one.
 
 ![club_performance](figures/club_performance.png)
 
@@ -320,6 +438,12 @@
 
 </details>
 
+parkrun is rightly proud of how many women it brings to the start line: among newcomers, the sexes are now close to balanced. By the front door, this is a genuine success story.
+
+But a turnstile is not the same as a home. The question is what happens after that first run — whether women stay in the same proportion they arrive. We can answer it by sorting every runner into bins by lifetime runs, from one-and-done up to the 500-plus ultra-loyalists, and tracking the female share across the loyalty ladder.
+
+A natural worry is that the older, more loyal cohorts simply joined in years when parkrun was more male. But the same fade appears *inside* every cohort — so it's a real loyalty gap, not just an echo of history. The committed core has a stubborn shape.
+
 ![female_retention_cliff](figures/female_retention_cliff.png)
 
 > Women are half of all newcomers but only a third of the 500+ ultra-loyalist core. parkrun’s female-participation success is a turnstile (high entry), not retention — the committed base stays stubbornly male.
@@ -335,6 +459,12 @@
 <p><strong>Robustness.</strong> Primary confound: parkrun's newcomer gender mix shifted from 37% (2006) to 49% (2019+); older cohorts skew male. Within-cohort stratification confirmed the gradient survives in every cohort (e.g., 2011–2014: 51% → 30%), establishing it is a real within-cohort loyalty gap, not a pure artifact of cohort composition. Snapshot design right-censors newcomers, biasing against the observed gap.</p>
 
 </details>
+
+But clubs do something more important than speed — something speed has been quietly hiding. If clubs don't make you faster, do they make you *stay*?
+
+Here we set times aside and count sheer persistence: each person's lifetime tally of parkruns, club members against everyone else. If the difference were really about fitness, it should vanish once we compare runners of similar ability. It doesn't.
+
+The gap in loyalty between the affiliated and the unaffiliated dwarfs anything we've seen so far — and it points to a simple, almost unfashionable conclusion about what actually keeps people running.
 
 ![club_retention_lever](figures/club_retention_lever.png)
 
@@ -352,6 +482,12 @@
 
 </details>
 
+Pull all of this together and one picture emerges: a small core does most of the running, and a vast casual crowd barely registers in the total. To put a number on that imbalance, economists reach for the *Gini coefficient* — a single dial from 0 (everyone does exactly the same amount) to 1 (one person does everything). Global income lands around 0.40.
+
+We can run the same calculation on parkrun effort: not money, but lifetime runs. The result reframes the whole chapter — the distribution of who-shows-up is more lopsided than the distribution of the world's income.
+
+One honest caveat keeps it grounded: this measures a 22-year *stock* of runs, and stocks pile up more unequally than yearly flows, so it isn't a perfect apples-to-apples match with income. But even the cautious version is striking.
+
 ![participation_gini](figures/participation_gini.png)
 
 > Participation effort is more unequal than income: a Gini of 0.65 on lifetime runs (vs ~0.40 for global income). A tiny dedicated core does almost all the running while the casual majority is nearly invisible in total volume.
@@ -368,8 +504,20 @@
 
 </details>
 
+So this is parkrun's quiet paradox. It is wonderfully easy to join and remarkably hard to keep — three in four newcomers now vanish, the loyal core skews older and more male than the welcoming front door suggests, and a thin, mostly-clubbed minority does the bulk of the running. The thing that holds people is not fitness or even fun, but belonging. Yet we have been looking at one English park, in one temperate climate, in the country that invented the whole thing. Travel to Cape Town, Tokyo or the Australian summer and the very meaning of a parkrun starts to shift. The next chapter asks: is parkrun even the same event everywhere?
+
 
 ## Chapter 4 — Is parkrun the same everywhere?
+
+By now parkrun has shown us its inner machinery: the round-number stampede, the veterans' plateau, the cliff of one-and-done runners. But all of that came from a single English park. Step back, and a bigger question hangs over everything: is parkrun the *same thing* in Tokyo, Cape Town, Melbourne and Teddington — or does the same 9 a.m. Saturday ritual quietly mean something different in each place?
+
+This chapter widens the lens to the whole planet. We will compare how nations run, how the seasons push turnout up and down in mirror image across the equator, what a rainy or windy morning costs a field, and where parkrun has flooded in versus barely arrived.
+
+Some of what follows is reassuringly universal — a weather clock that ticks the same everywhere. Some of it is stubbornly local — who bothers to show up, and whether your country has caught the bug at all. And one date, the same date, bends the entire world at once.
+
+Start with a measure that is supposed to erase all differences. *Age grade* is a handicap that scores your finish time against the world-best for someone of your exact age and sex, on a 0–100% scale — so a sprightly 70-year-old and a 30-year-old can be ranked on the same yardstick. It is built from the WMA standard (the World Masters Athletics tables of age-adjusted records). Because the formula already accounts for age and sex, the spread of age grades *ought* to look identical in every country on Earth.
+
+So we lined up the busiest event in nine countries and drew each nation's distribution of age grades. If parkrun were truly the same everywhere, the curves would stack neatly on top of one another. They don't — and the reason isn't unfair grading. It's who walks through the gate.
 
 ![agegrade_by_country](figures/agegrade_by_country.png)
 
@@ -387,6 +535,10 @@
 
 </details>
 
+If the grading is fair but the crowds differ, the next question is when those crowds appear. parkrun is an outdoor habit, and outdoor habits answer to the weather — but the weather is upside-down across the equator. When Bushy Park is basking in June, Melbourne is shivering through midwinter.
+
+To see the seasonal pulse cleanly we divided each event's weekly turnout by its own yearly average — stripping out the fact that some events are simply bigger — and then pooled everything by hemisphere and by week of the year. What emerges is two breathing curves, each inhaling for its own local summer. The surprise is the single week where they breathe together.
+
 ![hemisphere_seasonality](figures/hemisphere_seasonality.png)
 
 > Northern and Southern turnout trace mirror-image seasonal curves — each peaks in its own local summer — yet both jump together for the New Year, regardless of season.
@@ -402,6 +554,10 @@
 <p><strong>Robustness.</strong> "Northern" pattern is UK-heavy (138 of 313 events) and is really a UK+Europe+N.America composite with unequal country weighting; the seasonal shape claim is robust but absolute levels are sample-specific. Southern hemisphere's cleaner sinusoid is better isolated. The "summer/winter ratio" depends on window choice; peak-to-trough reported alongside. The Christmas effect is a dip-then-spike: both hemispheres first fall into early/mid-December lull before the post-Christmas/New Year resolution surge.</p>
 
 </details>
+
+The seasons set the broad rhythm, but what about a single Saturday morning? Every regular runner has a theory: rain keeps people home, heat ruins your time. We can finally put numbers on it — a *weather tax* levied on turnout and on finish times.
+
+The hard part is that parkrun also grew enormously over 16 years, so a busy warm summer could just be a busy *later* year. We removed that growth by measuring each week against its own year's typical turnout and time, then fit all the weather variables at once. (The temperature term is bent at 15 °C — a 'hinge' — to capture the fact that both ends of the thermometer hurt, the way an upside-down U falls away on both sides.) The result is a precise price list for bad weather, and a Goldilocks temperature that is colder than you'd guess.
 
 ![weather_tax](figures/weather_tax_v2.png)
 
@@ -419,6 +575,10 @@
 
 </details>
 
+So far we've asked how nations run and when. Now: do they have anywhere to run at all? parkrun's map looks global, but a flag on a map isn't the same as access. To measure real saturation we counted 5k events per country and divided by population — events per million people.
+
+The gap is staggering, a 700-fold range from the most-covered country to the least. The tempting explanation is age: maybe poorly-covered countries are simply newer markets that haven't grown up yet. To test that we plotted each country's *tenure* — years since its first event — against its coverage. If youth explained the gap, older markets would always sit higher. One stubborn data point breaks the rule and points instead at culture.
+
 ![deserts](figures/deserts_v2.png)
 
 > parkrun’s per-capita coverage spans a 700× range. The ceiling is cultural, not market youth: 17-year-old Denmark sits 9× below 15-year-old Australia, and Ireland out-covers the founder UK.
@@ -434,6 +594,10 @@
 <p><strong>Robustness.</strong> Tenure data is sparse: only 4 countries have histories. AU and US launch dates are lower bounds (earliest sampled event may postdate true first event by ~0.6–1 year), but this understatement is small relative to the Denmark–Australia spread. Germany, Italy, Japan, and Netherlands (wealthy, low-coverage cases that would most sharply isolate tenure from culture) lack historical data; when those become available, the ceiling claim can be strengthened.</p>
 
 </details>
+
+The weather tax told us bad mornings thin the crowd and slow the median runner. But there's a subtler victim: the personal best. A PB ('New PB!') is the badge runners chase hardest, and it's exquisitely sensitive to conditions that the median finisher barely notices.
+
+To isolate weather from everything else, we looked only at runners eligible to set a PB (not first-timers), removed the long-run decline in PB rates as a field matures, and compared each day only against others in the same fortnight of the year. What's left is the pure effect of a warmer-, wetter-, or windier-than-normal morning. One culprit stands out — and it's the one runners complain about least.
 
 ![weather_pb](figures/weather_pb.png)
 
@@ -451,6 +615,10 @@
 
 </details>
 
+We close the chapter where the seasons surprised us: a single calendar date that the whole world honours at once. But Christmas and New Year don't just move the crowds — they change the very *character* of the run.
+
+The clue is the unscanned barcode. Every finisher is meant to scan a token and a personal barcode; when the barcode goes unread, the finisher is timed but anonymous — an 'Unknown'. The rate of these untimed finishers is a quiet thermometer of how seriously people are taking the morning. We measured it on every Christmas and New Year's Day at Bushy, against the ordinary Saturdays on either side. The two festive dates turn out to be opposites: one is a costume party, the other a vow.
+
 ![special_dates](figures/special_dates.png)
 
 > Christmas is parkrun’s least-timed day — 1 in 7 finishers don’t scan a barcode (triple the normal rate), a fancy-dress, bring-the-family affair — while New Year’s Day is its most committed, the untimed rate dipping below normal.
@@ -464,8 +632,22 @@
 
 </details>
 
+So parkrun is, and isn't, the same everywhere. The grading is fair, the weather clock is universal, and the world leans into the New Year as one. But who shows up, when their summer falls, and whether their country has any events at all — those remain stubbornly, humanly local. Which raises a darker question about sameness: what happens when the same shock hits everyone at once? In March 2020, it did.
+
 
 ## Chapter 5 — The planet hits pause
+
+For sixteen years, the story of parkrun had been a story of growth. New events lit up across the map, fields filled out, and the only question seemed to be how big the whole thing could get. Then, in a single week of March 2020, every clock in the world stopped at once.
+
+The pandemic was a tragedy for almost everyone. But for someone studying human behaviour, it was also something rarer: a clean natural experiment. A natural experiment is when the world runs a test you could never run yourself — here, switching off a free weekly run for millions of people, in dozens of countries, all on the same morning. Nobody planned it. Everyone lived it.
+
+That gives us a chance to ask two questions you normally cannot. First: when an entire global habit is forced to zero, how does it come back — fast, slow, the same everywhere? And second, the harder one: does it come back at all? When the world finally pressed play again, did the crowds return to the start line — or did some of them simply never come back?
+
+Start with the shape of the shock itself. To compare countries fairly we cannot just count heads, because parkrun is gigantic in Britain and tiny in Germany. So each country is scored against its own 2019 — its last normal year is set to 100, and every later week is measured as a percentage of that. This is called *indexing*: it is a way of asking "how full is the room compared to how full it used to be", regardless of how big the room was to begin with.
+
+Indexed this way, the opening act is eerily identical. Eight countries, eight different cultures and governments, and every single one falls off the same cliff to near-zero in the same week of March 2020. That part is the easy bit — a virus does not check your passport.
+
+The interesting part is the climb back. Reopening was not a shared moment but a staggered one, each nation reading from a different clock. New Zealand, an island that crushed the virus early, was running again by June 2020. South Africa stayed dark until January 2022 — a full nineteen months later. And some recoveries were not clean steps at all but a *sawtooth*, lighting up and going dark again as local lockdowns came and went.
 
 ![covid_scar](figures/covid_scar.png)
 
@@ -483,6 +665,14 @@
 
 </details>
 
+Getting back to the start line is one thing. Filling it is another. A country can reopen and still find half its crowd missing — and the only way to see that is to wait for the dust to settle and count.
+
+So this last view skips the messy middle entirely. It takes a stable, ordinary year before the pandemic, 2019, and a stable, ordinary year well after it, 2023, and asks a blunt question of each event: how big is your crowd now compared to then? A score of 1.0 means you fully recovered. Above 1.0 means you came back bigger. Below 1.0 means people are missing.
+
+To keep this honest, the analysis only looks at events that were alive and running in both years, so it is not fooled by events that simply closed — a trap called *survivorship bias*, where you accidentally study only the survivors and conclude everyone is fine. What is left is a genuine before-and-after on the same set of events.
+
+And the verdict splits sharply along national lines. Younger parkrun nations like Canada came back *larger* than before. Britain, the heartland, shrank a little. And South Africa never really came back at all — its median event now draws barely six in ten of its old crowd, with only a sliver of events back to full strength. Crucially, this is not missing data: South Africa held just as many events in 2023 as in 2019. The runs are happening. The runners are the ones who didn't return.
+
 ![covid_winners_losers](figures/covid_winners_losers.png)
 
 > Recovery split parkrun by nation: newer markets came back bigger, the UK shrank slightly, and South Africa never recovered — its median event runs at 0.61× its 2019 crowd, with only 4% of events back to full size.
@@ -499,8 +689,24 @@
 
 </details>
 
+The pandemic, then, did two things at once. It proved how universal the habit had become — everyone stopped together, in lockstep — and it exposed how fragile that habit could be, with some crowds returning bigger and others quietly thinning out. A shared shock, but a deeply unequal recovery. Which raises a question we have so far only circled: if participation varies this much between nations, who exactly is showing up — and how do their performances really compare once we strip away age, sex, and country? That is where we turn next.
+
 
 ## Chapter 6 — The fragile scaffolding
+
+parkrun has no paid staff. Not at the events, anyway. Every Saturday, in some 2,900 parks across the world, a free 5K happens because a handful of people got there early in the cold, set out the cones, scanned the barcodes and stood at the finish funnel calling out encouragement. No one pays them. If they don't show, there is no parkrun that week.
+
+We have spent the previous chapters watching parkrun behave like a force of nature — bending to the seasons, scarring under COVID, drawing in millions. But a force of nature doesn't need anyone to set the alarm. This one does. The entire global ritual sits on top of a thin layer of unpaid labour, and that layer is the most human, and most fragile, part of the whole machine.
+
+So here is the question this short chapter asks: as a parkrun grows — from a sleepy twenty-runner event into a thousand-strong Saturday institution — does the crew of volunteers grow with it? Common sense says yes: more runners, more helpers. The data says something stranger, and more worrying.
+
+To answer it, we line up every weekly event we have full records for — 41,429 individual Saturdays across 111 parkruns in four countries — and simply plot how many volunteers turned out against how many runners finished. If staffing kept pace with turnout, the relationship would be a straight line: double the runners, double the crew.
+
+It isn't a straight line. It's a curve that flattens hard. Statisticians call this *sublinear scaling* — the output grows, but slower and slower as the input climbs. Here the volunteer count rises roughly as the finishers raised to the power of 0.4 (written V ≈ F^0.4). In plain terms: quadruple the runners and you don't get four times the crew — you get a bit less than double. A near-fixed core team of a few people does the work whether 50 or 500 show up.
+
+The human consequence is stark. At a tiny event, roughly one in three of the people there is helping run it. At a thousand-finisher giant, it's closer to one in twenty-five — the same small crew, stretched thinner and thinner across a swelling crowd. The most beloved, most crowded parkruns are, structurally, the most under-supported.
+
+And there's a second story hiding in the floor of the chart — the minimum crew an event needs even when almost no one runs. That floor turns out to be cultural, not mechanical: a Danish parkrun gets the job done with around five core volunteers where a British one fields about ten. Same task, half the people. The squeeze as events grow is universal across all four nations; the size of the bedrock crew is a matter of national habit.
 
 ![volunteer_economy](figures/volunteer_economy_v2.png)
 
@@ -518,10 +724,16 @@
 
 </details>
 
+This is the quiet fragility beneath the spectacle. A planetary habit, a pandemic survived, millions of finish times — all of it balanced on a crew of a few people per park who keep showing up for free, and who get proportionally fewer the more successful their event becomes. Which leaves one last, very human thing to account for: not the scaffolding, but the people on it — the millions who came once and never returned, and the rare, devoted few who have done this 500 times. We close on them.
+
 
 ## Showing up
 
-parkrun is an astonishingly global, fragile, human act of showing up. The median participant does it exactly once — yet a devoted core has done it 500+ times, across a hundred countries, through a pandemic, in the rain. Every Saturday, the same ritual, repeated, is what makes the regularities in this book visible at all.
+Strip away the regressions and the survival curves, and one fact sits underneath everything in this book: the median parkrunner does it exactly once. One Saturday, one barcode, one time — and then, for most people, never again. That is not a failure of the thing. It is the thing. parkrun is an enormous, fragile, weekly act of showing up, held together by a devoted few. A tiny core has run it five hundred times or more; a thin, unpaid crew of volunteers gets there early in the cold to set out the cones. The regularities in these pages are only visible because that ritual repeats, in the same parks, week after week, through rain and a pandemic.
+
+The data is honest about its limits. Much of the sharpest detail comes from a single English park, Bushy, where the record runs deepest; the global picture is a careful sample, not a full census. Numbers can tell us that loyalty is fading, that clubs recruit the already-fast rather than making people fast, that South Africa never quite came back after COVID. They cannot tell us why a particular person laced up on a particular grey morning, or what it meant to them to finish.
+
+What the numbers can do is honour the showing up. Behind every dot on the map and every tick on a survival curve is somebody who chose, on a Saturday they could have stayed in bed, to walk out into the cold and run. That choice, repeated a million times a week, is what this whole book is really about.
 
 
 ---
