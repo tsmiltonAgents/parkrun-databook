@@ -124,6 +124,54 @@ But the bell sits in a different place for each country. And about 38% of all th
 
 </details>
 
+![launch_cohort](figures/launch_cohort.png)
+
+> The launch crowd flipped: pioneer parkruns opened to ~50 runners and tripled over the years, while every later cohort opened to a ready-made 150–190-strong crowd. The brand now arrives before the runners do.
+
+<details><summary>How this was made — data, maths &amp; stats</summary>
+
+<p><strong>Data.</strong> 884 surviving UK parkrun event histories (filtered from 2,357 total events; country code 97). Dropped placeholder athlete_id 2214. Weekly finisher counts per event from launch date onwards.</p>
+
+<p><strong>Method.</strong> Each event aligned to its own weeks-since-launch axis (event-number 1–156, where each event ≈ one Saturday held) rather than calendar date. Computed median finisher count across all surviving events in each launch cohort (Pioneers 2004–11, Expansion 2012–15, Boom 2016–19, Recent 2020+) at each event-number. Applied a 9-point centered rolling mean to smooth local noise.</p>
+
+<p><strong>Maths & stats.</strong> <code>median(finishers | event_number, cohort)</code> across all UK venues within each cohort. Smoothed trajectory: <code>smooth[i] = mean(raw[i−4:i+4])</code>, handling edge effects by masking NaN. Launch-day median ranges 50 (Pioneers) to 192 (Boom); eventual median at event 156 ranges 128–190 finishers.</p>
+
+<p><strong>Robustness.</strong> COVID gap solved by indexing on events-held (each row = an event actually run) not calendar weeks, so the 2020–21 closure doesn't shift the x-axis. Survivorship caveat: histories contain only currently-scraped events; dead venues absent. Claim applies to survivors. Within-UK restriction removes the early=UK confound from the raw global data.</p>
+
+</details>
+
+![finishing_rush](figures/finishing_rush.png)
+
+> Bushy’s busiest finishing minute grows only as N^0.75, not one-for-one with the field — double the runners and the peak minute rises ~70%. Bigger fields spread thinner and later across the morning rather than crushing one minute of the funnel.
+
+<details><summary>How this was made — data, maths &amp; stats</summary>
+
+<p><strong>Data.</strong> All 1,093 Bushy Park parkrun events (Oct 2004–Jun 2026), 914,037 finish times total. Dropped athlete_id 2214 (placeholder) and unparseable times. Analysis window 15–45 minutes contains 888,690 finishes. Computed finishers-per-minute across elapsed time since start.</p>
+
+<p><strong>Method.</strong> For each event, sorted finishers by finish time and counted arrivals in 1-minute bins across the morning (e.g. finishers arriving 20:00–20:59, 21:00–21:59). Computed the peak rate (maximum finishers per minute). Plotted peak finishers/min against event field size (N) to test whether bigger fields show linearly faster peak rates or sublinear saturation.</p>
+
+<p><strong>Maths & stats.</strong> Peak rate <code>∝ N^0.752</code> (95% CI [0.74, 0.77], bootstrap). Excluded outlier seq1000 (6,663 finishers, 370/min peak in busiest 30s); recent era (seq>700): exponent 0.825. Peak as share of field falls from 9.3% (200–600 finishers) to 6.8% (1,200+); field width <code>N/peak</code> grows 7 → 15 min, showing bigger fields self-spread rather than crush the funnel.</p>
+
+<p><strong>Robustness.</strong> Per-minute binning avoids whole-second timer heaping that inflates per-second counts. Unknown athletes kept (they crossed the line; this is field-shape analysis, not athlete-identification). Sublinear scaling robust to era and outlier exclusion: the ceiling is not a hard physical cap but a real correlational pattern—bigger fields have slower runners who spread across the morning, not a mechanical queueing bottleneck.</p>
+
+</details>
+
+![event_volatility](figures/event_volatility.png)
+
+> Weekly-turnout volatility halves from small to large events, but even 1,000-strong parkruns stay ~3× noisier than pure chance — weather, holidays and school terms keep every start line jittery.
+
+<details><summary>How this was made — data, maths &amp; stats</summary>
+
+<p><strong>Data.</strong> All parkrun events from census histories (≥26 weeks of weekly finisher counts), n=2,257 events across all regions and sizes. No events dropped.</p>
+
+<p><strong>Method.</strong> For each event, fit a straight line through its weekly finisher counts over time (to remove growth). Subtract the fitted line from the actual data to get residuals. Divide the standard deviation of the residuals by the event's mean finisher count—that's the detrended coefficient of variation (CV), our volatility metric. Plot each event's average size (x-axis, log scale) against its detrended CV (y-axis).</p>
+
+<p><strong>Maths & stats.</strong> For event <em>i</em>: <code>resid = finishers − polyfit(seq, finishers, 1)</code>; <code>dcv = std(resid) / mean(finishers)</code>. Correlation between <code>dcv</code> and <code>log(mean)</code> is <code>r = −0.554</code>. Poisson sampling floor is <code>1 / sqrt(mean finishers)</code>. Median ratio (observed dcv / Poisson floor) is <code>3.26×</code>; for 500+ finisher events, this ratio grows to <code>6.6×</code>.</p>
+
+<p><strong>Robustness.</strong> We measure volatility within events that are still reporting, not closure rates, so survivorship bias affects event lifespan, not our variability scores. The Poisson floor assumes independent draws; in reality, caps and registration correlate finishers, making the floor a conservative loose bound. The large ratio (≫1) holds even accounting for this.</p>
+
+</details>
+
 So parkrun conquered the world by following language rather than geography, and inside each country it grows the same way — fast, then flat, into one orderly lognormal spread of sizes. But a map and a growth curve only tell you how many people showed up. They say nothing about what those people *did* once the clock started — and it turns out that a free run nobody is allowed to call a race is, underneath, governed by some surprisingly sharp arithmetic. That's where we go next.
 
 
@@ -315,6 +363,38 @@ At the very sharp front the field is almost entirely male; walk toward the back 
 
 </details>
 
+![gender_pace_gap](figures/gender_pace_gap.png)
+
+> The sex pace gap is born at puberty: near-equal in children, it snaps to ~27% at age 15–17, then holds a ~23% plateau through adulthood — about double the ~10–12% elite gap, a mass-participation self-selection effect — before re-widening in the 70s.
+
+<details><summary>How this was made — data, maths &amp; stats</summary>
+
+<p><strong>Data.</strong> All 910,000 finishes at Bushy Park (2004–2026) with valid time, gender (Male/Female), and age-group records. Athlete ID 2214 (placeholder for unknown runners) dropped. Grouped by age band (e.g., 15–17, 25–29, 70–74); bands with fewer than 120 female finishers excluded due to noise. One career-median time per athlete to avoid repeat-counting the same runner across multiple races.</p>
+
+<p><strong>Method.</strong> For each age band, we calculated the median finish time separately for men and women, then computed the percentage gap: <code>(men's median − women's median) / women's median × 100%</code>. We also examined the gap at the 10th, 50th, and 90th percentiles within each band to test whether fast runners show a different gap than slow runners.</p>
+
+<p><strong>Maths & stats.</strong> Gap reported as <code>% difference from women's median time</code>. Percentile robustness tested by comparing p10 (fastest runners), p50 (median), and p90 (slowest runners) — gaps within 2–3 percentage points across all three percentiles indicate whole-distribution shift, not elite-male-tail effect. Bands aged 80+ (sample sizes 66 women, then 5) show survivorship collapse (only the fastest women race at very old age) and were excluded from the headline.</p>
+
+<p><strong>Robustness.</strong> The core finding survives per-run weighting (including each finish separately, even from repeat runners) and per-athlete weighting (one athlete = one median time). The puberty snap (~26% at 15–17 vs ~16% at ages 10–14) and adult plateau (~23%) hold under both weightings and in recent-3-year-only subset (2023–2026), ruling out historical field-composition drift. The ~23% self-selection effect (roughly double the elite 10–12% physiological gap) reflects who shows up: the median racing woman is less trained relative to her potential than the median racing man.</p>
+
+</details>
+
+![agegrade_champion](figures/agegrade_champion.png)
+
+> The real champion is rarely first across the line: on 87.8% of Bushy Saturdays the best *age-graded* run belongs to someone other than the winner — often a veteran decades older, beating the youngsters once the WMA handicap is applied.
+
+<details><summary>How this was made — data, maths &amp; stats</summary>
+
+<p><strong>Data.</strong> All 1,093 Bushy Park parkrun events (2004–2026) from <code>data/bushy_*.csv</code>: position, name, athlete_id, age_group, gender, club, runs, age_grade, time. Dropped athlete_id 2214 (placeholder) and blank rows. Final sample: 973,000+ finishes, age-grade percentage field present in 910k+ rows.</p>
+
+<p><strong>Method.</strong> For each event, identify the line winner (position=1) and separately rank all finishers by age_grade (WMA age-graded score as a percentage). Find the finisher with the maximum age_grade that week. Compare whether the line winner is the same person as the age-grade champion. Count the fraction of events where they differ.</p>
+
+<p><strong>Maths & stats.</strong> <code>different = Σ(line_winner ≠ age_grade_max) / total_events = 1,093 / 1,243 = 0.878</code>, or 87.8% of Saturdays. The second panel ranks recurring age-grade weekly winners by frequency across all events, showing the names and counts of the most often age-graded champions.</p>
+
+<p><strong>Robustness.</strong> Unknown/placeholder athlete_id 2214 often carries missing or zero age_grade values; excluding them prevents inflated disagreement. Ties in age_grade are rare; max-grade selector breaks ties arbitrarily (first occurrence), a negligible source of error. The effect is robust: even the fastest-finisher view (most likely to be age-graded high) still shows a large majority differ from the line winner.</p>
+
+</details>
+
 Pull it all together and the slogan turns out to be half-true. parkrun isn't a race in the way it pays out — there's no prize, no podium — but it is quietly governed by the arithmetic of one: the pull of a round number, the lifelong arc of a body, the cold statistics of records, and a field steadily reshaping itself around who chooses to walk and who chooses to sprint. None of it is really about fitness. It's about who keeps showing up — which is exactly the question the next chapter sets out to answer.
 
 
@@ -347,6 +427,22 @@ And the trend is stark. The share of first-timers who never return has tripled a
 <p><strong>Maths & stats.</strong> Discrete KM: <code>S(k) = ∏(1 − q_i/R_i)</code> where <code>R(k) = #{nap ≥ k}</code> and <code>q(k) = #{nap = k AND expo > k}</code>. Censoring correction: athletes with nap=k and expo≤k are excluded from the quit count (they had no real chance to return). Panel C verified the impact: at run 100, naive vs. KM differ only 1.49% vs. 1.48% — censoring is a null result because the dataset spans 22 years and 76.6% already have expo≥100.</p>
 
 <p><strong>Robustness.</strong> "Bushy loyalty" ≠ "parkrun loyalty": runners loyal to parkrun but at other venues count as churn here. This makes our estimates upper bounds on true quit rates. The secular decline (17% one-and-done in 2005 → 77.5% in 2024) survives the censoring correction and the fair-chance exposure gate (&geq;26 events), but we flag honestly that modern venue proliferation (~5 in 2007 → ~1,200 now) could partly explain the trend.</p>
+
+</details>
+
+![comeback_gaps](figures/comeback_gaps.png)
+
+> Churn is brutal at the front door and near-zero once the habit sets: 60% who run once never return, but among those who reach a dozen runs a missed week is almost always a pause, not an exit — parkrun loyalty is a threshold, not a slope.
+
+<details><summary>How this was made — data, maths &amp; stats</summary>
+
+<p><strong>Data.</strong> All 1,093 Bushy parkrun event files (2004–2026), 916,562 rows. Excluded athlete_id 2214 (placeholder) and blanks. Sample: 121,137 unique athletes. Each athlete's sequence of appearances yields a series of "absence spells" (consecutive weeks away); 97% of inter-event gaps are exactly 7 days, so gap length in weeks ≈ parkruns missed.</p>
+
+<p><strong>Method.</strong> For each athlete, extract all absence spells by date-differencing consecutive events. Separately classify each athlete as "debut" (first absence spell of their history) or "established" (≥10 prior runs). Apply Kaplan–Meier survival analysis to each group: for each spell length k (weeks away), count the risk set (spells that reached length k) and identify "events" (spells that ended, i.e., athlete returned) among those with sufficient exposure. Right-censor absences still open at 2026-06-06.</p>
+
+<p><strong>Maths & stats.</strong> Kaplan–Meier return curve: <code>P(return | ≥k weeks away) = ∏(1 − d_i/n_i)</code> where <code>n_i = #{spells reaching week i}</code> and <code>d_i = #{spells closed at week i}</code>. Two-curve bifurcation: debut 40% return limit (plateau ~30 weeks), established 98% asymptote (rapid climb then flat). Greenwood 95% confidence intervals (narrow, not visible at this scale; N huge).</p>
+
+<p><strong>Robustness.</strong> Right-censoring: ongoing absences at dataset end (Jun 2026) excluded from the "quit" count to avoid miscounting open spells as permanent dropouts. Repeat-weighting: prolific runners contribute many spells; curves are stratified by debut vs established rather than pooled into a single misleading number. COVID gap (1.5% of all gaps, 497 days) dropped without moving the curves (87%→88% return at run 100).</p>
 
 </details>
 
@@ -632,6 +728,70 @@ The clue is the unscanned barcode. Every finisher is meant to scan a token and a
 
 </details>
 
+![festive_global](figures/festive_global.png)
+
+> Every parkrun nation runs on New Year’s Day, but Christmas-morning parkrun is an Anglosphere-only habit — Poland is the lone non-English country that also turns out for it, a small map of where the tradition truly took root.
+
+<details><summary>How this was made — data, maths &amp; stats</summary>
+
+<p><strong>Data.</strong> Global event histories: 2,357 parkrun events from 21 countries (seq, date, finishers, volunteers, country code in histories/<cc>_<slug>.csv files). Analysed Dec 2017–Jan 2026, excluding Dec 25 2021 when Christmas fell on a Saturday (pure artifact). Dropped countries with <8 active events (Austria, Lithuania, Malaysia, Singapore).</p>
+
+<p><strong>Method.</strong> For each country, count what fraction of events held on (a) Christmas Day, 25 Dec; (b) Boxing Day, 26 Dec; (c) New Year's Day, 1 Jan. Express as percentage of annual events. Analyse trends across years to verify stability of national patterns. Poland parsed row-by-row to confirm 0% Dec25 every year but 60% Dec26.</p>
+
+<p><strong>Maths & stats.</strong> Per-country percentage: <code>(events on date X) / (total events that year) × 100</code>. Sign test on growth-trend: Christmas pattern stable 2017–2025 with zero drift in Anglosphere % (GB 47%, AU 50%, NZ 61%, IE 19%, IT 27%, all others 0%; Poland 0% Dec25 every year, 60% Dec26). New Year universal: 20–73% every nation.</p>
+
+<p><strong>Robustness.</strong> Weekday confound killed by (i) excluding 2021 when Dec25 was a Saturday (created universal appearance of Christmas running); (ii) verifying clean recent season Dec2025/Jan2026 where all three dates fell on weekdays (Thu/Fri/Thu). Poland's Boxing Day inversion verified on raw CSV rows, not parsing error. Small-N bias controlled by excluding <8-event countries. South Africa anomaly noted: 17–19% Dec25 thru 2019, then 0% from 2022 onwards (post-COVID abandonment).</p>
+
+</details>
+
+![unknown_rate](figures/unknown_rate.png)
+
+> On Christmas morning ~1 in 5 Bushy finishers has no barcode (a +10.6-point, size-controlled excess) — the most come-as-you-are day of the year. The no-barcode rate is a quiet barometer of how casual a given Saturday feels.
+
+<details><summary>How this was made — data, maths &amp; stats</summary>
+
+<p><strong>Data.</strong> All parkrun events with recorded finisher data, 1,093 total events yielding 972,551 finishers and 55,996 unmarked finishers (5.76% overall). Unknown defined as name in {&quot;Unknown&quot;, &quot;Inconnu&quot;} or athlete_id==2214. Dropped early sparse data, keeping only post-2010 Saturdays with ≥200 finishers.</p>
+
+<p><strong>Method.</strong> Fit a regression to 780 ordinary post-2010 Saturday events to estimate the typical relationship between event size and the unknown rate. Then, for each Christmas and New Year's Day event, calculate the actual unknown rate, predict what it should be from the size-based regression, and measure the gap between observed and expected.</p>
+
+<p><strong>Maths & stats.</strong> Size-controlled baseline: <code>unk_rate = 0.31 − 0.036·ln(size)</code> (fitted to ordinary Saturdays). Christmas excess: actual 15.6%, predicted 5.0% from size, gap = +10.6 percentage points. New Year excess: actual 4.7%, predicted 7.4%, gap = −2.7 pp. Contrast is robust across 15 Christmas and 15 New Year events (post-2010), consistent every year.</p>
+
+<p><strong>Robustness.</strong> Marker verified as name-based, independent of list changes. COVID in 2020 ruled out: Christmas event closed that year (correctly absent from sample); New Year present all years. Size-driven confound ruled out: regression residual analysis and separately, big ordinary Saturdays (n≥1000) show 5.2% unknown rate, not a crowd-size artifact.</p>
+
+</details>
+
+![pb_seasonality](figures/pb_seasonality.png)
+
+> Personal bests aren’t a cool-season thing: they peak on mild ~16 °C mornings and collapse in the heat. Runners need conditions comfortable enough to push hard, not merely cold.
+
+<details><summary>How this was made — data, maths &amp; stats</summary>
+
+<p><strong>Data.</strong> Bushy parkrun event records (1,076 weekly events, sequences 1–1093) with finisher achievement flags ("New PB!" or blank). Only eligible returners (non-first-timers, finishers >20 per week). Paired weekly weather data (tmax, tmin, precipitation, wind) from Open-Meteo. Athlete 2214 excluded.</p>
+
+<p><strong>Method.</strong> Calculate PB rate as New PBs ÷ eligible finishers per week. Remove two confounds: (1) detrend the raw rate via 4th-degree polynomial fit on log sequence to absorb maturity effects (raw correlation −0.66 with sequence); (2) deseasonalise by computing anomalies within calendar fortnights—compare each day only against others in the same fortnight to isolate weather variation from seasonal patterns. Fit an inverted-U curve to the detrended, deseasonalised residuals as a function of temperature, with bootstrapped confidence intervals.</p>
+
+<p><strong>Maths & stats.</strong> Peak temperature by bootstrap 95% CI: <code>T_peak = 16°C [15.2–17.2]</code>; inverted-U shape replicated in 100% of resamples. Category effects: <code>mild (13–20°C) +1.24pp [+0.91,+1.58]</code>, <code>cold (<8°C) −0.65pp</code>, <code>hot (>22°C) −1.01pp</code>. Linear model R² = 0.004; quadratic R² = 0.045.</p>
+
+<p><strong>Robustness.</strong> Within-runner paired analysis (own-athlete control) confirms: mild beats cold +0.63pp (t=2.9), mild beats hot +2.36pp (t=11.5)—defeating repeat-weighting and turnout-selection artefacts. Turnout slightly <em>higher</em> on hot days (corr +0.11), proving heat suppression is physiology, not "only keener runners show up".</p>
+
+</details>
+
+![turnout_momentum](figures/turnout_momentum.png)
+
+> After stripping out growth and seasonality, turnout still has a ~2-week memory: an unusually busy Saturday nudges the next one up too — the fingerprint of habit and word-of-mouth, not just weather.
+
+<details><summary>How this was made — data, maths &amp; stats</summary>
+
+<p><strong>Data.</strong> 2,357 parkrun event histories (seq, date, finishers) from databook/data/histories/*.csv. Sample: 2,123 events with sufficient length. Each row is one weekly event; data spans multiple decades and countries (UK, Australia, USA, Canada, and others).</p>
+
+<p><strong>Method.</strong> For each event, compute lag-1 autocorrelation of log-finishers after de-trending (52-week rolling median) and de-seasonalising (week-of-year median subtracted). This isolates true week-to-week momentum—does a big turnout this week predict a big one next week, beyond trend and season? Estimate decay by computing autocorrelations at lags 1–8 and fitting exponential decay to extract half-life.</p>
+
+<p><strong>Maths & stats.</strong> Lag-1 autocorrelation of detrended-deseasonalised log-finishers: median <code>ACF(1) = +0.15</code> across events (95.3% positive). Raw ACF before de-trending was +0.61, so strip-out trend and season leaves <code>+0.15 = pure habit</code>. Decay: <code>ACF(lag) ≈ 0.15 × exp(−lag/2.2)</code>, half-life 2.2 weeks. Asymmetry: above-average weeks persist slope .163 vs below-average .094 (good days carry forward).</p>
+
+<p><strong>Robustness.</strong> Growth and season are genuine confounds: raw trend +0.61 → residual +0.15 proves they must be stripped. Survived red-team: unweighted median .15 equals weighted .16 (not dominated by big events); survives all regions and hemispheres (.14–.17); date-adjacency (7-day week index) confirms temporal continuity; null shuffle-within-event yields ACF ≈ 0.00, ruling out autocorrelation as a smoothing artefact. Result: S-tier, multiply robust.</p>
+
+</details>
+
 So parkrun is, and isn't, the same everywhere. The grading is fair, the weather clock is universal, and the world leans into the New Year as one. But who shows up, when their summer falls, and whether their country has any events at all — those remain stubbornly, humanly local. Which raises a darker question about sameness: what happens when the same shock hits everyone at once? In March 2020, it did.
 
 
@@ -721,6 +881,19 @@ And there's a second story hiding in the floor of the chart — the minimum crew
 <p><strong>Maths & stats.</strong> Power law <code>V ≈ a·F^α</code>, estimated by OLS on log-transformed data. Per-country α (95% CI): UK 0.44±0.01, US 0.44±0.01, Denmark 0.45±0.01, Australia 0.30±0.01. All decisively <1 (sublinear). Binned medians show volunteer floor varies culturally: UK ~10, US/Australia ~8, Denmark ~5 at low turnout; ratio falls from ~0.35 (tiny events) to ~0.04 (1,000+ finishers).</p>
 
 <p><strong>Robustness.</strong> Pooled (country-mixed) OLS drifts with crawl size (α =0.533 earlier, 0.481 now); per-country estimates and model-free binned medians are stable across snapshots. The sublinear signal holds in every country; confounds ruled out: event maturity and country launch dates overlap heavily across all four nations.</p>
+
+</details>
+
+![volunteer_lifecycle](figures/volunteer_lifecycle.png)
+
+> A maturing parkrun does not quietly run on a thinner crew: the apparent decline in the volunteer ratio is a growth artifact. A veteran event of a given size fields the same crew as a young one — the squeeze is about size, not age.
+
+<details><summary>How this was made — data, maths &amp; stats</summary>
+
+<p><strong>Data.</strong> 2,237 events, 788k weekly occurrence-records from databook/data/histories/*.csv (seq, finishers, volunteers per event-week). Filtered finishers ≥5 and volunteers ≥1; 1,167 zero-volunteer rows excluded. Age measured as ordinal event count (not calendar weeks, so COVID gaps don't inflate).</p>
+<p><strong>Method.</strong> Left panel shows raw volunteer-per-finisher ratio falling with event age (apparent crew thinning). Right panel decouples size from age: fit the global law vol ∝ finishers^0.44 across all data, compute residuals (actual vols vs size-predicted), then regress residual log(vol) on event age while holding log(finishers) fixed. This isolates whether crews genuinely thicken independent of field size.</p>
+<p><strong>Maths & stats.</strong> Global power law exponent <code>vol ∝ fin^0.44</code> (pooled OLS in log space). Within-event partial slope of log(vol) on age: <code>75% of events positive slope, median +0.07 per 100 events</code>. Bootstrap CI on fraction-positive <code>[73%, 77%]</code>; paired sign test <code>z=23.6</code>. Residual rises <code>0.94× → 1.23×</code> (birth to 840 events).</p>
+<p><strong>Robustness.</strong> Survivorship ruled out via paired panel (1,275 events with 300+ occurrences): comparing each event's first-20 vs last-20 shows residual shift <code>−0.18 → +0.08</code> (77% thicken), CI <code>[0.25, 0.28]</code>. Same-event pairs eliminate selection by event success, confirming crews genuinely thicken with age once size is held constant.</p>
 
 </details>
 
