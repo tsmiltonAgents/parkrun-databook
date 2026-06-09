@@ -5,7 +5,9 @@
 @font-face{font-family:'et-book';src:url('https://cdn.jsdelivr.net/gh/edwardtufte/tufte-css@master/et-book/et-book-roman-line-figures/et-book-roman-line-figures.woff') format('woff');font-weight:400;font-style:normal}
 @font-face{font-family:'et-book';src:url('https://cdn.jsdelivr.net/gh/edwardtufte/tufte-css@master/et-book/et-book-display-italic-old-style-figures/et-book-display-italic-old-style-figures.woff') format('woff');font-weight:400;font-style:italic}
 :root{--accent:#b5402f;--gold:#9a7d3a}
-html{font-size:15px}
+*{box-sizing:border-box}
+html{font-size:15px;overflow-x:hidden}
+img{max-width:100%}
 body{width:87.5%;margin:0 auto 0 12.5%;padding:0;
   font-family:'et-book',Palatino,'Palatino Linotype','Book Antiqua',Georgia,serif;
   background:#fffff8;color:#111;max-width:1400px;counter-reset:ch}
@@ -63,10 +65,21 @@ footer a{color:var(--accent)}
 .editions{position:fixed;top:14px;right:18px;font-style:italic;font-size:1.0rem;
   background:rgba(255,255,248,.9);padding:4px 10px;border:1px solid #e2ddca;border-radius:4px;z-index:9}
 .editions a{color:var(--accent);text-decoration:none}
-@media(max-width:900px){body{width:92%;margin:0 auto;padding:0 4%}
-  .masthead,.board,.byline,p,ol,ul,.epigraph,hr,footer,details.method{width:100%}
-  h1{font-size:2.8rem}
-  figcaption,figure.fullwidth figcaption{float:none;max-width:100%;margin:.6rem 0 0}}
+@media(max-width:900px){
+  body{width:auto;margin:0;padding:0 20px;max-width:100%}
+  /* everything goes full-width on narrow screens (the desktop column widths must be reset) */
+  .masthead,.board,.byline,.epigraph,p,ol,ul,.narr,.narr p,.lede,
+  figure,figure.fullwidth,figcaption,figure.fullwidth figcaption,
+  details.method,hr,footer{width:100%;max-width:100%;float:none}
+  figcaption,figure.fullwidth figcaption{margin:.6rem 0 0}
+  h1{font-size:2.4rem}
+  .subtitle{font-size:1.25rem}
+  .byline{font-size:1.02rem}
+  h2{font-size:1.7rem}
+  p,ol,ul,.narr p,.lede,.board ol,.epigraph{font-size:1.12rem;line-height:1.62rem}
+  .narr{margin:1rem 0}
+  .editions{position:static;display:inline-block;margin:14px 0 0}
+}
 </style></head><body>
 <div class=editions>Reading · <a href='scroll.html'>scrolling</a> · <a href='edited.html'>editor&#8217;s cut</a></div>
 <div class=masthead><div class=eyebrow>A data book</div><h1>parkrun, by the numbers</h1><span class=subtitle>How a free Saturday 5K in a London park became a global ritual — and what nearly a million finishes a week reveal about people, places and time.</span><div class=byline>Built from public parkrun results — the complete history of Bushy parkrun (≈973,000 finishes) and a worldwide census of 2,357 events — with weather from Open-Meteo. Every claim was red-teamed; every figure regenerates from source.</div></div>
